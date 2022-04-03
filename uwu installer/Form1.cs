@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.IO.Compression;
+using System.Diagnostics;
 
 namespace uwu_installer
 {
@@ -20,54 +21,79 @@ namespace uwu_installer
         {
             InitializeComponent();
         }
-
+        string zipdl = "whatever url";
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             WebClient downloadstuffs = new WebClient();
-            if (Directory.Exists(@"C:\Program Files\KME"))
+            try
             {
-                if (Directory.Exists(@"C:\Program Files\KME\Release"))
+                if (Directory.Exists(@"C:\Program Files\kyalikotest"))
                 {
-                    Uri uri = new Uri("https://github.com/TSSKake/KakesMediaExplorer/archive/refs/heads/main.zip");
-                    downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\KME\githubmain.zip");
-                    guna2Button1.Text = "Downloading..";
-                    downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
+                    if (Directory.Exists(@"C:\Program Files\kyalikotest\Release"))
+                    {
+                        Uri uri = new Uri(zipdl);
+                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        guna2Button1.Text = "Downloading..";
+                        downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(@"C:\Program Files\kyalikotest\Release");
+                        Uri uri = new Uri(zipdl);
+                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        guna2Button1.Text = "Downloading..";
+                        downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
+                    }
                 }
                 else
                 {
-                    Directory.CreateDirectory(@"C:\Program Files\KME\Release");
-                    Uri uri = new Uri("https://github.com/TSSKake/KakesMediaExplorer/archive/refs/heads/main.zip");
-                    downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\KME\githubmain.zip");
-                    guna2Button1.Text = "Downloading..";
-                    downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
+                    Directory.CreateDirectory(@"C:\Program Files\kyalikotest");
+                    if (Directory.Exists(@"C:\Program Files\kyalikotest\Release"))
+                    {
+                        Uri uri = new Uri(zipdl);
+                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        guna2Button1.Text = "Downloading..";
+                        downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(@"C:\Program Files\kyalikotest\Release");
+                        Uri uri = new Uri(zipdl);
+                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        guna2Button1.Text = "Downloading..";
+                        downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Directory.CreateDirectory(@"C:\Program Files\KME");
-                if (Directory.Exists(@"C:\Program Files\KME\Release"))
-                {
-                    Uri uri = new Uri("https://github.com/TSSKake/KakesMediaExplorer/archive/refs/heads/main.zip");
-                    downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\KME\githubmain.zip");
-                    guna2Button1.Text = "Downloading..";
-                    downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
-                }
-                else
-                {
-                    Directory.CreateDirectory(@"C:\Program Files\KME\Release");
-                    Uri uri = new Uri("https://github.com/TSSKake/KakesMediaExplorer/archive/refs/heads/main.zip");
-                    downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\KME\githubmain.zip");
-                    guna2Button1.Text = "Downloading..";
-                    downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
-                }
+                MessageBox.Show("Unable To Download\n\nException Error:\n{0}", ex.Message);
             }
-
         }
 
         private void FiledownloadComplete(object sender,AsyncCompletedEventArgs e)
         {
-            ZipFile.ExtractToDirectory(@"C:\Program Files\uwu\kat.zip", @"C:\Program Files\uwu");
-            File.Open(@"C:\Program Files\uwu\uwu poggy woggy boy.exe", FileMode.Open);
+            ZipFile.ExtractToDirectory(@"C:\Program Files\kyalikotest\kat.zip", @"C:\Program Files\kyalikotest\Release");
+            using (Process uwu = new Process())
+            {
+                uwu.StartInfo.UseShellExecute = false;
+                uwu.StartInfo.FileName = @"C:\Program Files\kyalikotest\Release\Debug\uwu poggy woggy boy.exe";
+                uwu.StartInfo.CreateNoWindow = true;
+                uwu.StartInfo.RedirectStandardOutput = false;
+                uwu.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                uwu.Start();
+            }
+            guna2Button1.Text = "Installed!";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"https://github.com/kyaliko");
         }
     }
 }
