@@ -21,7 +21,16 @@ namespace uwu_installer
         {
             InitializeComponent();
         }
-        string zipdl = "whatever url";
+        /* 
+            zipdl = The Zip URL
+            filename = the file name you want to execute (optional)
+            destinationpath = the path the executable is in
+            zippath = the zip file download path
+        */
+        string zipdl = "https://";
+        string filename = "uwu poggy woggy boy.exe";
+        string destinationpath = @"C:\Program Files\kyalikotest\Release\Debug\";
+        string zippath = @"C:\Program Files\kyalikotest\kat.zip";
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             WebClient downloadstuffs = new WebClient();
@@ -32,7 +41,7 @@ namespace uwu_installer
                     if (Directory.Exists(@"C:\Program Files\kyalikotest\Release"))
                     {
                         Uri uri = new Uri(zipdl);
-                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        downloadstuffs.DownloadFileAsync(uri, zippath);
                         guna2Button1.Text = "Downloading..";
                         downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
                     }
@@ -40,7 +49,7 @@ namespace uwu_installer
                     {
                         Directory.CreateDirectory(@"C:\Program Files\kyalikotest\Release");
                         Uri uri = new Uri(zipdl);
-                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        downloadstuffs.DownloadFileAsync(uri, zippath);
                         guna2Button1.Text = "Downloading..";
                         downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
                     }
@@ -51,7 +60,7 @@ namespace uwu_installer
                     if (Directory.Exists(@"C:\Program Files\kyalikotest\Release"))
                     {
                         Uri uri = new Uri(zipdl);
-                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        downloadstuffs.DownloadFileAsync(uri, zippath);
                         guna2Button1.Text = "Downloading..";
                         downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
                     }
@@ -59,7 +68,7 @@ namespace uwu_installer
                     {
                         Directory.CreateDirectory(@"C:\Program Files\kyalikotest\Release");
                         Uri uri = new Uri(zipdl);
-                        downloadstuffs.DownloadFileAsync(uri, @"C:\Program Files\kyalikotest\kyaliko.zip");
+                        downloadstuffs.DownloadFileAsync(uri, zippath);
                         guna2Button1.Text = "Downloading..";
                         downloadstuffs.DownloadFileCompleted += new AsyncCompletedEventHandler(FiledownloadComplete);
                     }
@@ -73,14 +82,14 @@ namespace uwu_installer
 
         private void FiledownloadComplete(object sender,AsyncCompletedEventArgs e)
         {
-            ZipFile.ExtractToDirectory(@"C:\Program Files\kyalikotest\kat.zip", @"C:\Program Files\kyalikotest\Release");
+            ZipFile.ExtractToDirectory(zippath, @"C:\Program Files\kyalikotest\Release");
             using (Process uwu = new Process())
             {
-                uwu.StartInfo.UseShellExecute = false;
-                uwu.StartInfo.FileName = @"C:\Program Files\kyalikotest\Release\Debug\uwu poggy woggy boy.exe";
-                uwu.StartInfo.CreateNoWindow = true;
+                uwu.StartInfo.UseShellExecute = true;
+                uwu.StartInfo.FileName = destinationpath + filename;
+                uwu.StartInfo.CreateNoWindow = false;
                 uwu.StartInfo.RedirectStandardOutput = false;
-                uwu.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                uwu.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
                 uwu.Start();
             }
             guna2Button1.Text = "Installed!";
@@ -94,6 +103,11 @@ namespace uwu_installer
         private void label3_Click(object sender, EventArgs e)
         {
             Process.Start(@"https://github.com/kyaliko");
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
