@@ -34,9 +34,9 @@
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,6 +92,7 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(459, 36);
             this.guna2TextBox1.TabIndex = 1;
+            this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // label1
             // 
@@ -124,19 +125,18 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(633, 447);
             this.guna2CustomGradientPanel1.TabIndex = 3;
             // 
-            // guna2ControlBox1
+            // label3
             // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.Animated = true;
-            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.BorderRadius = 5;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.LightCoral;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(604, 0);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(28, 28);
-            this.guna2ControlBox1.TabIndex = 3;
-            this.guna2ControlBox1.UseTransparentBackground = true;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(13, 420);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 18);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Click here for src";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -150,18 +150,19 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "KYALIKO Open Source Installer";
             // 
-            // label3
+            // guna2ControlBox1
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(13, 420);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 18);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Click here for src";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.Animated = true;
+            this.guna2ControlBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.BorderRadius = 5;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.LightCoral;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(604, 0);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(28, 28);
+            this.guna2ControlBox1.TabIndex = 3;
+            this.guna2ControlBox1.UseTransparentBackground = true;
             // 
             // Form1
             // 
