@@ -20,6 +20,7 @@ namespace uwu_installer
         public Form1()
         {
             InitializeComponent();
+            guna2TextBox1.Text = destinationpath;
         }
         /* 
             zipdl = The Zip URL
