@@ -7,8 +7,8 @@
     <ProjectGuid>{5A671C41-9F5E-4381-A2F3-8D5766AFD952}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Installer_Class_Library</RootNamespace>
-    <AssemblyName>Installer Class Library</AssemblyName>
+    <RootNamespace>InstallLib</RootNamespace>
+    <AssemblyName>InstallLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

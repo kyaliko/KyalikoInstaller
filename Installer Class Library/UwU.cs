@@ -6,19 +6,35 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Installer_Class_Library
+namespace InstallLib
 {
     public class UwU
     {
+
+        public string kat = "";
         public static void Unzip(string ZipPath, string DestinationPath)
         {
+            //uwu
             ZipFile.CreateFromDirectory(ZipPath, DestinationPath);
         }
+        public static void zip(string FolderPath, string ZipName, string ZipDestination)
+        {
+            ZipFile.CreateFromDirectory(FolderPath, ZipDestination + ZipName);
+        }
+
+        
         public static void InstallFile(Uri Url, string FileName)
         {
-            using(WebClient install = new WebClient())
+            try
             {
-                install.DownloadFileAsync(Url, FileName);
+                using (WebClient install = new WebClient())
+                {
+                    install.DownloadFileAsync(Url, FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
